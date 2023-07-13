@@ -1,11 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const connectDB = require("./db");
+const sse = require("./sse");
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("Welcome SSEDemo");
 });
+
+app.get("/stream", sse.init);
 
 const port = process.env.PORT ?? 3000;
 
