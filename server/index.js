@@ -9,6 +9,7 @@ const postRouter = require("./routes/post.routes");
 const app = express();
 
 app.use(cors({ origin: "http://127.0.0.1:3000", credentials: true }));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Welcome SSEDemo");

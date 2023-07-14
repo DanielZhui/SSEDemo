@@ -20,8 +20,8 @@ const getPostsService = async () => {
 
 const createPostService = async (post) => {
   try {
-    const post = await PostModel.create(post);
-    return { data: post, error: false, message: "success", statusCode: 200 };
+    const result = await PostModel.create(post);
+    return { data: result, error: false, message: "success", statusCode: 200 };
   } catch (error) {
     return {
       data: [],
