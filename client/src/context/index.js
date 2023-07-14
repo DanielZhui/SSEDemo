@@ -1,8 +1,11 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { appReducer } from "../reducer";
+import { nanoid } from "nanoid";
+import { getPosts } from "../lib";
+import { GET_POST } from "../actions";
 
 const initialState = {
-  userId: "",
+  userId: nanoid(),
   posts: [],
   isLoading: true,
   isError: false,
@@ -16,13 +19,18 @@ const AppProvider = (props) => {
 
   useEffect(() => {
     // fetch initial posts
-    const initialPosts = "";
+    const getFetchPosts = async () => {
+      const result = await getPosts();
+      console.log("result???", result);
+      appDispatch({ type: GET_POST, payload: result });
+    };
+    getFetchPosts();
   }, [userId]);
 
   return (
-    <AppContext.Provider
-      value={{ appState, appDispatch }}
-    ></AppContext.Provider>
+    <AppContext.Provider value={{ appState, appDispatch }}>
+      {props.children}
+    </AppContext.Provider>
   );
 };
 

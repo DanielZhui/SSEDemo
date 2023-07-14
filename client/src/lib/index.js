@@ -2,7 +2,9 @@ import { Axios } from "../config";
 
 export const getPosts = async () => {
   try {
-    const { data = [] } = await Axios.get("/post");
+    const {
+      data: { data = [] },
+    } = await Axios.get("/posts");
     return { data, error: false };
   } catch (error) {
     return { data: [], error: true };
