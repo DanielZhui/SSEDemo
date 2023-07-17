@@ -6,7 +6,6 @@ import {
   MDBCardImage,
   MDBCardSubTitle,
   MDBCardTitle,
-  MDBFooter,
   MDBIcon,
 } from "mdb-react-ui-kit";
 import { useAppContext } from "../context";
@@ -29,7 +28,7 @@ const PostCard = ({ post }) => {
           {post.content}
         </MDBCardSubTitle>
       </MDBCardBody>
-      <MDBFooter>
+      <MDBCardFooter>
         {post.likers.includes(userId) ? (
           <>
             {post.likers.length}
@@ -44,16 +43,10 @@ const PostCard = ({ post }) => {
         ) : (
           <>
             {post.likers.length}
-            <MDBIcon
-              className="likeBtn"
-              size="lg"
-              far
-              icon="heart"
-              color="danger"
-            />
+            <MDBIcon className="likeBtn" size="lg" far icon="heart" />
           </>
         )}
-      </MDBFooter>
+      </MDBCardFooter>
       <MDBCardFooter></MDBCardFooter>
     </MDBCard>
   );
