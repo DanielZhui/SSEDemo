@@ -18,7 +18,6 @@ const PostCard = ({ post }) => {
   } = useAppContext();
   return (
     <MDBCard className="h-100">
-      <div>post card</div>
       <MDBCardImage
         src={post.photo}
         position="top"

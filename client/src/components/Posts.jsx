@@ -9,7 +9,6 @@ const Posts = () => {
   } = useAppContext();
   return (
     <MDBRow>
-      This is posts
       {posts.map((p) => (
         <MDBCol>
           <PostCard post={p} />
