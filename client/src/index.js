@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // md-react-ui-kit css
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import AppProvider from "./context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

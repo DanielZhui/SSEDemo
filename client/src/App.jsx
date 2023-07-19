@@ -25,7 +25,7 @@ function App() {
           a post and see the real-time functionality in action.
         </h2>
       )}
-      <MDBContainer>
+      <MDBContainer fluid className="mt-3 mb-3">
         <Posts />
       </MDBContainer>
       <AddPostModel isOpen={isOpen} toggleShow={toggleShow} />

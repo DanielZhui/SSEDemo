@@ -15,6 +15,11 @@ const PostCard = ({ post }) => {
     appState: { userId },
     appDispatch,
   } = useAppContext();
+
+  const handlePostLike = async (post) => {
+    //
+  };
+
   return (
     <MDBCard className="h-100">
       <MDBCardImage
@@ -43,11 +48,16 @@ const PostCard = ({ post }) => {
         ) : (
           <>
             {post.likers.length}
-            <MDBIcon className="likeBtn" size="lg" far icon="heart" />
+            <MDBIcon
+              className="likeBtn"
+              size="lg"
+              far
+              icon="heart"
+              onClick={() => handlePostLike(post)}
+            />
           </>
         )}
       </MDBCardFooter>
-      <MDBCardFooter></MDBCardFooter>
     </MDBCard>
   );
 };
