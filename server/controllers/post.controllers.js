@@ -1,6 +1,7 @@
 const {
   createPostService,
   getPostsService,
+  updatePostService,
 } = require("../services/post.services");
 
 const getPostsController = async (req, res) => {
@@ -14,7 +15,15 @@ const createPostController = async (req, res) => {
   res.status(result.statusCode).json(result);
 };
 
+const updatePostController = async (req, res) => {
+  const { id } = req.params;
+  const { userIds } = req.body;
+  const result = await updatePostService(id, userIds);
+  res.status(result.statusCode).json(result);
+};
+
 module.exports = {
   getPostsController,
   createPostController,
+  updatePostController,
 };

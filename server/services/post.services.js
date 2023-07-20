@@ -32,7 +32,25 @@ const createPostService = async (post) => {
   }
 };
 
+const updatePostService = async (id, userIds) => {
+  try {
+    await PostModel.findByIdAndUpdate(id, {
+      likers: userIds,
+    });
+    const result = await PostModel.findById(id);
+    return { data: result, error: false, message: "success", statusCode: 200 };
+  } catch (error) {
+    return {
+      data: [],
+      message: error.message ?? "Sorry an error occurred",
+      error: true,
+      statusCode: 500,
+    };
+  }
+};
+
 module.exports = {
   getPostsService,
   createPostService,
+  updatePostService,
 };

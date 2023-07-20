@@ -21,7 +21,6 @@ const AppProvider = (props) => {
     // fetch initial posts
     const getFetchPosts = async () => {
       const result = await getPosts();
-      console.log("result???", result);
       appDispatch({ type: GET_POST, payload: result });
     };
     getFetchPosts();
