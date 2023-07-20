@@ -1,4 +1,5 @@
 import {
+  CREATE_POST,
   DELETE_POST,
   GET_POST,
   GET_POST_STREAM,
@@ -27,6 +28,13 @@ export const appReducer = (state, action) => {
       return {
         ...state,
         posts: dPost.data,
+      };
+    case CREATE_POST:
+      const cPost = action.payload.post;
+      console.log("cPost===>", cPost);
+      return {
+        ...state,
+        posts: [...state.posts, cPost.data],
       };
     default:
       return state;

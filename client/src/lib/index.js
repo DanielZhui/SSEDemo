@@ -14,7 +14,7 @@ export const getPosts = async () => {
 export const createPost = async (body) => {
   try {
     const {
-      data: { data = [], message, error },
+      data: { data = {}, message, error },
     } = await Axios.post("/posts", body);
     return { data, message, error };
   } catch (error) {
