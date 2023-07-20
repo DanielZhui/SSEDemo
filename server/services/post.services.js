@@ -51,11 +51,8 @@ const updatePostService = async (id, userIds) => {
 };
 
 const deletePostService = async (id) => {
-  console.log("===>", id);
   try {
     const objectId = new ObjectId(id);
-    console.log("===>", objectId);
-
     await PostModel.findByIdAndDelete(objectId);
     return await getPostsService();
   } catch (error) {

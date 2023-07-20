@@ -24,7 +24,7 @@ const updatePostController = async (req, res) => {
 };
 
 const deletePostController = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const result = await deletePostService(id);
   res.status(result.statusCode).json(result);
 };

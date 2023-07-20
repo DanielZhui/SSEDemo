@@ -14,6 +14,6 @@ postRouter.post("/posts", createPostController);
 
 postRouter.post("/posts/:id", updatePostController);
 
-postRouter.delete("/posts", deletePostController);
+postRouter.delete("/posts/:id", deletePostController);
 
 module.exports = postRouter;
