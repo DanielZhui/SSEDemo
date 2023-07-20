@@ -9,8 +9,8 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import { useAppContext } from "../context";
-import { updatePost } from "../lib";
-import { UPDATE_POST } from "../actions";
+import { deletePost, updatePost } from "../lib";
+import { DELETE_POST, UPDATE_POST } from "../actions";
 
 const PostCard = ({ post }) => {
   const {
@@ -24,6 +24,14 @@ const PostCard = ({ post }) => {
       payload: { id: post._id, likers: [userId, ...post.likers] },
     });
     await updatePost({ ...post, likers: [userId, ...post.likers] });
+  };
+
+  const handleDeletePost = async (id) => {
+    const posts = await deletePost(id);
+    appDispatch({
+      type: DELETE_POST,
+      payload: { posts },
+    });
   };
 
   return (
@@ -63,6 +71,12 @@ const PostCard = ({ post }) => {
             />
           </>
         )}
+        <MDBIcon
+          icon="fas fa-trash-can"
+          color="danger"
+          className="likeBtn"
+          onClick={() => handleDeletePost(post._id)}
+        />
       </MDBCardFooter>
     </MDBCard>
   );

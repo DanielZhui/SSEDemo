@@ -1,4 +1,9 @@
-import { GET_POST, GET_POST_STREAM, UPDATE_POST } from "../actions";
+import {
+  DELETE_POST,
+  GET_POST,
+  GET_POST_STREAM,
+  UPDATE_POST,
+} from "../actions";
 
 export const appReducer = (state, action) => {
   switch (action.type) {
@@ -16,6 +21,12 @@ export const appReducer = (state, action) => {
       return {
         ...state,
         posts,
+      };
+    case DELETE_POST:
+      const dPost = action.payload.posts;
+      return {
+        ...state,
+        posts: dPost.data,
       };
     default:
       return state;

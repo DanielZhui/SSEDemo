@@ -38,3 +38,18 @@ export const updatePost = async (post) => {
     };
   }
 };
+
+export const deletePost = async (id) => {
+  try {
+    const {
+      data: { data = [], message, error },
+    } = await Axios.delete(`/posts/${id}`);
+    return { data, message, error };
+  } catch (error) {
+    return {
+      data: [],
+      message: error.message ?? "Update post error",
+      error: true,
+    };
+  }
+};
