@@ -25,7 +25,7 @@ const createPostService = async (post) => {
     return { data: result, error: false, message: "success", statusCode: 200 };
   } catch (error) {
     return {
-      data: [],
+      data: {},
       message: error.message ?? "Sorry an error occurred",
       error: true,
       statusCode: 500,
