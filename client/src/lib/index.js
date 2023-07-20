@@ -21,3 +21,20 @@ export const createPost = async (body) => {
     return { data: [], message: error.message, error: true };
   }
 };
+
+export const updatePost = async (post) => {
+  try {
+    const {
+      data: { data = [], message, error },
+    } = await Axios.post(`/posts/${post._id}`, {
+      userIds: post.likers,
+    });
+    return { data, message, error };
+  } catch (error) {
+    return {
+      data: [],
+      message: error.message ?? "Update post error",
+      error: true,
+    };
+  }
+};

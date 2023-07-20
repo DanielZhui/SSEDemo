@@ -9,6 +9,8 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import { useAppContext } from "../context";
+import { updatePost } from "../lib";
+import { UPDATE_POST } from "../actions";
 
 const PostCard = ({ post }) => {
   const {
@@ -17,7 +19,11 @@ const PostCard = ({ post }) => {
   } = useAppContext();
 
   const handlePostLike = async (post) => {
-    //
+    appDispatch({
+      type: UPDATE_POST,
+      payload: { id: post._id, likers: [userId, ...post.likers] },
+    });
+    await updatePost({ ...post, likers: [userId, ...post.likers] });
   };
 
   return (
