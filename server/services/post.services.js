@@ -1,4 +1,5 @@
 const { PostModel } = require("../models/post");
+const { ObjectId } = require("mongodb");
 
 const getPostsService = async () => {
   try {
@@ -49,8 +50,27 @@ const updatePostService = async (id, userIds) => {
   }
 };
 
+const deletePostService = async (id) => {
+  console.log("===>", id);
+  try {
+    const objectId = new ObjectId(id);
+    console.log("===>", objectId);
+
+    await PostModel.findByIdAndDelete(objectId);
+    return await getPostsService();
+  } catch (error) {
+    return {
+      data: [],
+      message: error.message ?? "Sorry an error occurred",
+      error: true,
+      statusCode: 500,
+    };
+  }
+};
+
 module.exports = {
   getPostsService,
   createPostService,
   updatePostService,
+  deletePostService,
 };
