@@ -24,6 +24,9 @@ const updatePostController = async (req, res) => {
   const { id } = req.params;
   const { userIds } = req.body;
   const result = await updatePostService(id, userIds);
+  if (!result.error) {
+    sse.send(result.data, "update");
+  }
   res.status(result.statusCode).json(result);
 };
 

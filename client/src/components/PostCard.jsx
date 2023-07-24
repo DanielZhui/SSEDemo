@@ -51,13 +51,7 @@ const PostCard = ({ post }) => {
         {post.likers.includes(userId) ? (
           <>
             {post.likers.length}
-            <MDBIcon
-              className="likeBtn"
-              size="lg"
-              fas
-              icon="heart"
-              color="danger"
-            />
+            <MDBIcon size="lg" fas icon="heart" color="danger" />
           </>
         ) : (
           <>
