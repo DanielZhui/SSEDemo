@@ -11,14 +11,12 @@ import {
   MDBSpinner,
 } from "mdb-react-ui-kit";
 import React, { useState } from "react";
-import { CREATE_POST } from "../actions";
 import { useAppContext } from "../context";
 import { createPost } from "../lib";
 
 const AddPostModel = ({ isOpen, toggleShow }) => {
   const {
     appState: { userId },
-    appDispatch,
   } = useAppContext();
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -40,7 +38,6 @@ const AddPostModel = ({ isOpen, toggleShow }) => {
     try {
       setLoading(true);
       const res = await createPost({ title, photo: image, userId, content });
-      appDispatch({ type: CREATE_POST, payload: { post: res } });
       setMessage(res.message);
       resetForm();
       setLoading(false);

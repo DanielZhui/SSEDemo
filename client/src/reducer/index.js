@@ -30,11 +30,10 @@ export const appReducer = (state, action) => {
         posts: dPost.data,
       };
     case CREATE_POST:
-      const cPost = action.payload.post;
-      console.log("cPost===>", cPost);
+      const cPost = action.payload;
       return {
         ...state,
-        posts: [...state.posts, cPost.data],
+        posts: [...state.posts, cPost],
       };
     default:
       return state;

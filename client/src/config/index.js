@@ -6,5 +6,5 @@ export const Axios = axios.create({
   withCredentials: true,
 });
 
-// export const STREAM_URL = `${SERVER_URL}/stream`;
-// export const ssEvents = new EventSource(STREAM_URL, { withCredentials: true });
+export const STREAM_URL = `${SERVER_URL}/stream`;
+export const ssEvents = new EventSource(STREAM_URL, { withCredentials: true });

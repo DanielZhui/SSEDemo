@@ -2,7 +2,8 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import { appReducer } from "../reducer";
 import { nanoid } from "nanoid";
 import { getPosts } from "../lib";
-import { GET_POST } from "../actions";
+import { CREATE_POST, GET_POST } from "../actions";
+import { ssEvents } from "../config";
 
 const initialState = {
   userId: nanoid(),
@@ -24,6 +25,11 @@ const AppProvider = (props) => {
       appDispatch({ type: GET_POST, payload: result });
     };
     getFetchPosts();
+
+    ssEvents.addEventListener("create", (e) => {
+      const data = JSON.parse(e.data);
+      appDispatch({ type: CREATE_POST, payload: data });
+    });
   }, [userId]);
 
   return (
