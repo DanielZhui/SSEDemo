@@ -3,12 +3,14 @@ const express = require("express");
 const connectDB = require("./db");
 const sse = require("./sse");
 const cors = require("cors");
+const compression = require("compression");
 
 const postRouter = require("./routes/post.routes");
 
 const app = express();
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(compression());
 app.use(express.json());
 
 app.get("/", (req, res) => {

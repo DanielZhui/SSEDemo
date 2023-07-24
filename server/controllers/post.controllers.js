@@ -4,6 +4,7 @@ const {
   updatePostService,
   deletePostService,
 } = require("../services/post.services");
+const sse = require("../sse");
 
 const getPostsController = async (req, res) => {
   const result = await getPostsService();
@@ -14,6 +15,9 @@ const createPostController = async (req, res) => {
   const body = req.body;
   const result = await createPostService(body);
   res.status(result.statusCode).json(result);
+  if (!result.error) {
+    sse.send(result.data, "create");
+  }
 };
 
 const updatePostController = async (req, res) => {
