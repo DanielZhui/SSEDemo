@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { getPosts } from "../lib";
 import { CREATE_POST, GET_POST, UPDATE_POST } from "../actions";
 import { ssEvents } from "../config";
+import { toast } from "react-toastify";
 
 const initialState = {
   userId: nanoid(),
@@ -28,6 +29,7 @@ const AppProvider = (props) => {
 
     ssEvents.addEventListener("create", (e) => {
       const data = JSON.parse(e.data);
+      toast("someone create post success...");
       appDispatch({ type: CREATE_POST, payload: data });
     });
 
